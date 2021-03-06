@@ -6,6 +6,7 @@ import PasswordInput from './form-elements/password-input.jsx'
 import PasswordRepeatInput from './form-elements/password-repeat-input.jsx'
 import Role from './form-elements/role-input.jsx'
 import SubmitButton from './form-elements/submit-button.jsx'
+import { Link } from "react-router-dom";
 
 import './sign-up.css';
 import { emailIsValid } from './../../utils/validateEmail.js';
@@ -47,9 +48,14 @@ class SignUpForm extends Component {
         }
     }
 
-    handleSubmit = (event) => {
+    handleSignUp = (event) => {
         event.preventDefault();
         alert("You are submitting");
+        localStorage.setItem("firstname", this.state.firstname);
+        localStorage.setItem("lastname", this.state.lastname);
+        localStorage.setItem("email", this.state.email);
+        localStorage.setItem("role", this.state.role);
+        localStorage.setItem("password", this.state.password);
     }
 
     //Reads email on change and saves it to the state
@@ -107,7 +113,7 @@ class SignUpForm extends Component {
     render() {
         return (
             <div className="SignUpForm">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSignUp}>
                     <fieldset>
                         <legend>Sign up</legend>
                         <FirstNameInput handleFirstNameChange={this.handleFirstNameChange}/>
@@ -119,6 +125,7 @@ class SignUpForm extends Component {
                         <SubmitButton disabled={this.state.buttonDisabled} buttonText="Sign up" />
                     </fieldset>
                 </form>
+                <p>Already have an account? <Link to="/login">Log in here</Link></p>
             </div>
         );
     }

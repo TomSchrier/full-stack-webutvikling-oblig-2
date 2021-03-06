@@ -9,15 +9,14 @@ import {
 import './App.css';
 import USERS from './users';
 
-import Home from './components/home/Home';
-import UserList from './components/user-list/user-list';
-import NotFound from './components/NotFound';
 import About from './components/about/About';
-import PrivateRoute from './routes/PrivateRoute';
+import ForgotPassword from './components/forms/forgot-password';
+import Home from './components/home/Home';
 import Login from './components/login/Login';
-import SignUpForm from './components/forms/sign-up.jsx';
-//import LogInForm from './components/forms/log-in.jsx';
-//import ForgotPassword from './components/forms/forgot-password';
+import NotFound from './components/NotFound';
+import PrivateRoute from './routes/PrivateRoute';
+import SignUpForm from './components/forms/sign-up';
+import UserList from './components/user-list/user-list';
 
 //this is my test i want it on github
 class App extends Component {
@@ -63,9 +62,14 @@ class App extends Component {
                 </PrivateRoute>
                 <Route path="/login">
                   <Login/>
-                  <SignUpForm/>
                 </Route>
-                <Route path="/">
+                <Route path="/signup">
+                  <SignUpForm />
+                </Route>
+                <Route path="/forgotpassword">
+                  <ForgotPassword />
+                </Route>
+                <Route exact path="/">
                   <About />
                 </Route>
                 <Route>

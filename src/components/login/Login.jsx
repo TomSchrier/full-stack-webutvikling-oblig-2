@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
+import LogInForm from '../forms/log-in';
 
 import { isLoggedIn } from '../../utils/isAuth';
 import './Login.css';
@@ -24,6 +25,7 @@ class Login extends Component {
             <div className="Login">
                 {!this.state.isAuth && <button onClick={this.handleLogIn}>Log In</button>}
                 {this.state.isAuth && <button onClick={this.handleLogOut}>Log Out</button>}
+                <LogInForm/>
             </div>
         );
     }
