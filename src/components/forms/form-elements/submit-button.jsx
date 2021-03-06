@@ -5,7 +5,7 @@ class SubmitButton extends Component {
         let buttonText = this.props.buttonText
         return (
             <>
-                <button type="submit" className="submit-button">{buttonText}</button>
+                <button type="submit" disabled={this.props.disabled}>{buttonText}</button>
             </>
         );
     }
