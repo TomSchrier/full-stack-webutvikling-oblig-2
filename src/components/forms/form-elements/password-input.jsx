@@ -4,8 +4,8 @@ class PasswordInput extends Component {
     render() {
         return (
             <>
-                <label for="psw">Password</label>
-                <input type="password" placeholder="Enter Password" name="psw" required/>
+                <label htmlFor="psw">Password</label>
+                <input type="password" placeholder="Enter Password" name="psw" required onChange={this.props.handlePasswordChange} />
             </>
         );
     }
