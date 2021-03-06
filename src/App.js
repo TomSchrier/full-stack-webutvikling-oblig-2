@@ -15,6 +15,9 @@ import NotFound from './components/NotFound';
 import About from './components/about/About';
 import PrivateRoute from './routes/PrivateRoute';
 import Login from './components/login/Login';
+import SignUpForm from './components/forms/sign-up.jsx';
+import LogInForm from './components/forms/log-in.jsx';
+import ForgotPassword from './components/forms/forgot-password';
 
 //this is my test i want it on github
 class App extends Component {
@@ -60,6 +63,9 @@ class App extends Component {
                 </PrivateRoute>
                 <Route path="/login">
                   <Login/>
+                  <SignUpForm/>
+                  <LogInForm/>
+                  <ForgotPassword/>
                 </Route>
                 <Route path="/">
                   <About />
