@@ -16,6 +16,7 @@ class Nav extends Component {
                         {this.isLinkSet('user') && <li><Link to="/user">User home</Link></li>}
                         {this.isLinkSet('dashboard') && <li><Link to="/dashboard">Dashboard</Link></li>}
                         {this.isLinkSet('login') && <li><Link to="/login">Log in</Link></li>}
+                        {this.isLinkSet('logout') && <li><Link to="/logout">Log out</Link></li>}
                     </ul>
                 </nav>
             </>

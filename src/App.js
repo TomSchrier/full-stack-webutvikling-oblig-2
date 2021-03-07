@@ -12,13 +12,15 @@ import About from './components/about/About';
 import ForgotPassword from './components/forms/forgot-password';
 import Home from './components/home/Home';
 import Login from './components/login/Login';
+import Logout from './components/logout/Logout';
+import Nav from './components/nav/nav';
 import NotFound from './components/NotFound';
 import PrivateRoute from './routes/PrivateRoute';
 import SignUpForm from './components/forms/sign-up';
 import UserList from './components/user-list/user-list';
-import Nav from './components/nav/nav';
+import { isLoggedIn } from './utils/isAuth';
 
-//this is my test i want it on github
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +28,7 @@ class App extends Component {
     this.state = {
       myUser: { ...USERS[0] },
       users: [...USERS],
+      redirect: null
     }
   }
 
@@ -35,7 +38,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <header className="App-header">
-              <Nav links={this.state.links}/>
+              <Nav links={this.state.links} />
             </header>
             <main>
               <Switch>
@@ -46,7 +49,10 @@ class App extends Component {
                   <Home user={this.state.myUser} onChangePlace={this.updateUserPlace} onChangeStatus={this.updateUserStatus} />
                 </PrivateRoute>
                 <Route path="/login">
-                  <Login/>
+                  <Login handleLogIn={this.handleLogIn} handleLogOut={this.handleLogOut} redirect={this.state.redirect} isAuth={this.state.isAuth} />
+                </Route>
+                <Route path="/logout">
+                  <Logout handleLogIn={this.handleLogIn} handleLogOut={this.handleLogOut} redirect={this.state.redirect} isAuth={this.state.isAuth} />
                 </Route>
                 <Route path="/signup">
                   <SignUpForm />
@@ -103,6 +109,25 @@ class App extends Component {
       }
     });
   }
+
+  handleLogIn = () => {
+    localStorage.setItem('userAuth', JSON.stringify(true));
+    const isAuth = isLoggedIn();
+    this.setState({
+      isAuth,
+      redirect: "/user",
+      links: ['home', 'user', 'dashboard', 'logout']
+    });
+  };
+
+  handleLogOut = () => {
+    localStorage.removeItem('userAuth');
+    this.setState({
+      isAuth: false,
+      redirect: undefined,
+      links: undefined
+    });
+  };
 }
 
 export default App;
