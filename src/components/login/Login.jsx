@@ -38,7 +38,6 @@ class Login extends Component {
     handleLogOut = () => {
         localStorage.removeItem('userAuth');
         this.setState({isAuth: false});
-
     };
 }
 

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import './App.css';
@@ -17,6 +16,7 @@ import NotFound from './components/NotFound';
 import PrivateRoute from './routes/PrivateRoute';
 import SignUpForm from './components/forms/sign-up';
 import UserList from './components/user-list/user-list';
+import Nav from './components/nav/nav';
 
 //this is my test i want it on github
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
     // posible values "available/busy and on-campus/home-office"
     this.state = {
       myUser: { ...USERS[0] },
-      users: [...USERS]
+      users: [...USERS],
     }
   }
 
@@ -35,22 +35,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <header className="App-header">
-              <nav>
-                <ul>
-                  <li>
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li>
-                    <Link to="/user">User home</Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </li>
-                  <li>
-                    <Link to="/login">Login</Link>
-                  </li>
-                </ul>
-              </nav>
+              <Nav links={this.state.links}/>
             </header>
             <main>
               <Switch>
