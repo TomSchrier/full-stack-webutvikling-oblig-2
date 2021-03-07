@@ -49,10 +49,10 @@ class App extends Component {
                   <Home user={this.state.myUser} onChangePlace={this.updateUserPlace} onChangeStatus={this.updateUserStatus} />
                 </PrivateRoute>
                 <Route path="/login">
-                  <Login handleLogIn={this.handleLogIn} handleLogOut={this.handleLogOut} redirect={this.state.redirect} isAuth={this.state.isAuth} />
+                  <Login handleLogIn={this.handleLogIn} redirect={this.state.redirect} isAuth={this.state.isAuth} />
                 </Route>
                 <Route path="/logout">
-                  <Logout handleLogIn={this.handleLogIn} handleLogOut={this.handleLogOut} redirect={this.state.redirect} isAuth={this.state.isAuth} />
+                  <Logout handleLogOut={this.handleLogOut} isAuth={this.state.isAuth} />
                 </Route>
                 <Route path="/signup">
                   <SignUpForm />
@@ -111,6 +111,7 @@ class App extends Component {
   }
 
   handleLogIn = () => {
+    console.log("hello, this is clicked");
     localStorage.setItem('userAuth', JSON.stringify(true));
     const isAuth = isLoggedIn();
     this.setState({
