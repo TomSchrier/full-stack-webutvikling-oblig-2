@@ -5,7 +5,7 @@ class Role extends Component {
         return (
             <>
                 <label htmlFor="role">Role:</label>
-                <select name="role" id="role" onChange={this.props.handleRoleChange}>
+                <select name="role" id="role" onChange={this.props.handleInputChange}>
                     <option value="student">Student</option>
                     <option value="teacher">Teacher</option>
                 </select>

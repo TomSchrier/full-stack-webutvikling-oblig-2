@@ -4,8 +4,8 @@ class FirstNameInput extends Component {
     render() {
         return (
             <>
-                <label htmlFor="firstName">First name</label>
-                <input type="text" placeholder="First name" name="firstName" required onChange={this.props.handleFirstNameChange}></input>
+                <label htmlFor="firstname">First name</label>
+                <input type="text" placeholder="First name" name="firstname" required onChange={this.props.handleInputChange}></input>
             </>
         );
     }

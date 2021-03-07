@@ -28,24 +28,13 @@ class SignUpForm extends Component {
         };
     }
 
-    handleFirstNameChange = (event) => {
-        let enteredFirstName = event.target.value;
-        this.setState({ firstname: enteredFirstName });
-    }
-
-    handleLastNameChange = (event) => {
-        let enteredLastName = event.target.value;
-        this.setState({ lastname: enteredLastName });
-    }
-
-    handleEmailChange = (event) => {
-        let enteredEmail = event.target.value;
-
-        if (emailIsValid(enteredEmail)) {
-            this.setState({ email: enteredEmail });
-        } else {
-            this.setState({ email: '' });
-        }
+    //General event handler. No validation before saving value in state (used for firstname, lastname and role)
+    handleInputChange = (event) => {
+        const value = event.target.value;
+        const name = event.target.name;
+        this.setState({
+            [name]: value
+        });
     }
 
     handleSignUp = (event) => {
@@ -64,14 +53,7 @@ class SignUpForm extends Component {
 
         if (emailIsValid(enteredEmail)) {
             this.setState({ email: enteredEmail });
-        } else {
-            this.setState({ email: '' });
         }
-    }
-
-    handleRoleChange = (event) => {
-        let enteredRole = event.target.value;
-        this.setState({ role: enteredRole });
     }
 
     //Reads password on change and saves it to the state if longer than 8 
@@ -116,10 +98,10 @@ class SignUpForm extends Component {
                 <form onSubmit={this.handleSignUp}>
                     <fieldset>
                         <legend>Sign up</legend>
-                        <FirstNameInput handleFirstNameChange={this.handleFirstNameChange}/>
-                        <LastNameInput handleLastNameChange={this.handleLastNameChange}/>
+                        <FirstNameInput handleInputChange={this.handleInputChange} />
+                        <LastNameInput handleInputChange={this.handleInputChange} />
                         <EmailInput handleEmailChange={this.handleEmailChange} />
-                        <Role handleRoleChange={this.handleRoleChange}/>
+                        <Role handleInputChange={this.handleInputChange} />
                         <PasswordInput handlePasswordChange={this.handlePasswordChange} />
                         <PasswordRepeatInput handleRepeatPasswordChange={this.handleRepeatPasswordChange} />
                         <SubmitButton disabled={this.state.buttonDisabled} buttonText="Sign up" />

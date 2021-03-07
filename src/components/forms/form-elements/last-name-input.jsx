@@ -5,7 +5,7 @@ class LastNameInput extends Component {
         return (
             <>
                 <label htmlFor="lastname">Last name</label>
-                <input type="text" placeholder="Last name" name="lastname" required onChange={this.props.handleLastNameChange}></input>
+                <input type="text" placeholder="Last name" name="lastname" required onChange={this.props.handleInputChange}></input>
             </>
         );
     }
