@@ -16,7 +16,7 @@ class LogInForm extends Component {
                         <legend>Log In</legend>
                         <EmailInput />
                         <PasswordInput />
-                        <SubmitButton buttonText="Log In" onClick={this.props.handleLogIn}/>
+                        <SubmitButton buttonText="Log In" handleLogIn={this.props.handleLogIn}/>
                     </fieldset>
                 </form>
                 <p>Dont have an account yet? <Link to="/signup">Sign up here</Link></p>

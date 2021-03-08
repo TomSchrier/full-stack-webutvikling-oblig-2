@@ -16,8 +16,8 @@ class Login extends Component {
 
         return (
             <div className="Login">
-                {!this.props.isAuth && <><button onClick={this.props.handleLogIn}>Log In</button><LogInForm onClick={this.props.handleLogIn}/></>}
-                {this.props.isAuth && <button onClick={this.props.handleLogOut}>Log Out</button>}
+                {!this.props.isAuth && <LogInForm handleLogIn={this.props.handleLogIn}/>}
+                {this.props.isAuth && <p>You are logged in.</p>}
             </div>
         );
     }

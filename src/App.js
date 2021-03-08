@@ -111,7 +111,6 @@ class App extends Component {
   }
 
   handleLogIn = () => {
-    console.log("hello, this is clicked");
     localStorage.setItem('userAuth', JSON.stringify(true));
     const isAuth = isLoggedIn();
     this.setState({
@@ -123,8 +122,9 @@ class App extends Component {
 
   handleLogOut = () => {
     localStorage.removeItem('userAuth');
+    const isAuth = isLoggedIn();
     this.setState({
-      isAuth: false,
+      isAuth,
       redirect: undefined,
       links: undefined
     });
