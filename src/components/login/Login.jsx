@@ -11,6 +11,14 @@ import './Login.css';
 //If the app is connected to a Backend, the auth logic should be implemented in a different file (SOLID)
 class Login extends Component {
 
+    constructor(props) {
+        super(props);
+        // posible values "available/busy and on-campus/home-office"
+        this.state = {
+          redirect: null
+        }
+      }
+
     render() {
 
         if (this.props.redirect) {
@@ -24,7 +32,7 @@ class Login extends Component {
         }
 
         return (
-            <div className="Login">
+            <>
                 {!this.props.isAuth && <>
                     <div className="LogInForm">
                         <form action="#">
@@ -41,7 +49,7 @@ class Login extends Component {
                 </>}
 
                 {this.props.isAuth && <p>You are logged in.</p>}
-            </div>
+            </>
         );
     }
 }

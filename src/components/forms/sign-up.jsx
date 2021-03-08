@@ -5,7 +5,6 @@ import LastNameInput from './form-elements/last-name-input.jsx'
 import PasswordInput from './form-elements/password-input.jsx'
 import PasswordRepeatInput from './form-elements/password-repeat-input.jsx'
 import Role from './form-elements/role-input.jsx'
-import SubmitButton from './form-elements/submit-button.jsx'
 import { Link } from "react-router-dom";
 
 import './sign-up.css';
@@ -23,12 +22,11 @@ class SignUpForm extends Component {
             email: '',
             role: 'student',
             password: '',
-            passwordmatch: false,
-            buttonDisabled: false
+            passwordmatch: false
         };
     }
 
-    //General event handler. No validation before saving value in state (used for firstname, lastname and role)
+    //General event handler. No validation before saving value in state (used for firstname, lastname and role) (Stolen from React documentation)
     handleInputChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
@@ -37,6 +35,7 @@ class SignUpForm extends Component {
         });
     }
 
+    //saved the entered data to the local storage becayse it act as a back end
     handleSignUp = (event) => {
         event.preventDefault();
         alert("You are submitting");
@@ -47,7 +46,7 @@ class SignUpForm extends Component {
         localStorage.setItem("password", this.state.password);
     }
 
-    //Reads email on change and saves it to the state
+    //Reads email on change and saves it to the state if it is a valid email
     handleEmailChange = (event) => {
         let enteredEmail = event.target.value;
 
@@ -104,7 +103,7 @@ class SignUpForm extends Component {
                         <Role handleInputChange={this.handleInputChange} />
                         <PasswordInput handlePasswordChange={this.handlePasswordChange} />
                         <PasswordRepeatInput handleRepeatPasswordChange={this.handleRepeatPasswordChange} />
-                        <SubmitButton disabled={this.state.buttonDisabled} buttonText="Sign up" />
+                        <button type="button" disabled={this.state.buttonDisabled}>Sign up</button> 
                     </fieldset>
                 </form>
                 <p>Already have an account? <Link to="/login">Log in here</Link></p>

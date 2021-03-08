@@ -1,3 +1,39 @@
-.Login {
-    max-width: 30em;
+.LogInForm {
+    box-sizing: border-box;
+    padding: 1em;
+    max-width: 960px;
+}
+
+.LogInForm fieldset {
+    padding: 1em;
+}
+
+.LogInForm input {
+    margin-bottom: 1.5em;
+    padding: 0.5em;
+    width: 100%;
+}
+
+.LogInForm button {
+    background-color: var(--color-bg-secondary);
+    border-radius: 4px;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0.5em;
+    width: 75%;
+}
+
+.LogInForm button:hover {
+    transform: translate(1px, 1px);
+}
+
+.LogInForm label {
+    float: left;
+    text-align: left;
+}
+
+legend {
+    font-size: 2rem;
 }

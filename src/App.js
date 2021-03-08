@@ -38,6 +38,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <header className="App-header">
+              {/* pass the links we want to display as props*/}
               <Nav links={this.state.links} />
             </header>
             <main>
