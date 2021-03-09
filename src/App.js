@@ -32,6 +32,15 @@ class App extends Component {
     }
   }
 
+componentDidMount(){ 
+  const isAuth = isLoggedIn();
+  let links = isAuth ? ['home', 'user', 'dashboard', 'logout'] : undefined;
+    this.setState({
+      isAuth,
+      links
+    })
+}
+
   render() {
     return (
       <div className="App">

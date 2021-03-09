@@ -4,7 +4,7 @@ export function allTrue(stateObj) {
     for (var property in stateObj) {
         
         //trash
-        if (!stateObj[property] && property !== 'buttonDisabled'){
+        if (!stateObj[property]){
             console.log(property);
             return false;
         };

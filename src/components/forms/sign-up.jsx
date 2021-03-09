@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import './sign-up.css';
 import { emailIsValid } from './../../utils/validateEmail.js';
 import { passwordIsValid } from './../../utils/validatePassword.js';
-//import { allTrue } from './../../utils/allTrue.js';
+import { allTrue } from './../../utils/allTrue.js';
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -80,16 +80,17 @@ class SignUpForm extends Component {
         }
     }
 
-    /*componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState) {
         if (prevState !== this.state) {
             if(allTrue(this.state)){
-                console.log("all true");
-                this.setState({ buttonDisabled: false });
+                console.log("all input values are true");
+                this.setState({ index: null });
             } else {
                 console.log("something is false or empty");
+                //this.setState({ index: null });
             };
         }
-    }*/
+    }
 
     render() {
         return (
@@ -103,7 +104,7 @@ class SignUpForm extends Component {
                         <Role handleInputChange={this.handleInputChange} />
                         <PasswordInput handlePasswordChange={this.handlePasswordChange} />
                         <PasswordRepeatInput handleRepeatPasswordChange={this.handleRepeatPasswordChange} />
-                        <button type="button" disabled={this.state.buttonDisabled}>Sign up</button> 
+                        <button type="button" disabled={this.state.index !== null ? true : false} onClick={()=>alert('sign up button clicked')}>Sign up</button>
                     </fieldset>
                 </form>
                 <p>Already have an account? <Link to="/login">Log in here</Link></p>
