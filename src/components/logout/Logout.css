@@ -1,3 +1,18 @@
 .Logout {
     max-width: 30em;
 }
+
+.ForgotPasswordForm button {
+    background-color: var(--color-bg-secondary);
+    border-radius: 4px;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0.5em;
+    width: 75%;
+}
+
+.ForgotPasswordForm button:hover {
+    transform: translate(1px, 1px);
+}
