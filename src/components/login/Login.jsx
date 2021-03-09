@@ -10,37 +10,22 @@ import './Login.css';
 //This component is implementing more than one functionality only for academic purposes.
 //If the app is connected to a Backend, the auth logic should be implemented in a different file (SOLID)
 class Login extends Component {
-
-    constructor(props) {
-        super(props);
-        // posible values "available/busy and on-campus/home-office"
-        this.state = {
-          redirect: null
-        }
-      }
-
     render() {
 
         if (this.props.redirect) {
             return <Redirect to={this.props.redirect} />
         }
 
-        if (!this.props.isAuth) {
-            console.log("isAuth is false show the form");
-        } else {
-            console.log("isAuth is true show the form");
-        }
-
         return (
             <>
                 {!this.props.isAuth && <>
                     <div className="LogInForm">
-                        <form action="#">
+                        <form action="#" onSubmit={this.props.handleLogIn}>
                             <fieldset>
                                 <legend>Log In</legend>
                                 <EmailInput />
                                 <PasswordInput />
-                                <button onClick={this.props.handleLogIn}>Log in</button>
+                                <button type="submit">Log in</button>
                             </fieldset>
                         </form>
                         <p>Dont have an account yet? <Link to="/signup">Sign up here</Link></p>
@@ -48,7 +33,7 @@ class Login extends Component {
                     </div>
                 </>}
 
-                {this.props.isAuth && <p>You are logged in.</p>}
+                {this.props.isAuth && <><p>You're logged in.</p><Link to="/user">Visit your user page here.</Link></>}
             </>
         );
     }

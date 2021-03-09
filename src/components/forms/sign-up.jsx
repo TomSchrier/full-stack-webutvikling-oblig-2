@@ -8,9 +8,6 @@ import Role from './form-elements/role-input.jsx'
 import { Link } from "react-router-dom";
 
 import './sign-up.css';
-import { emailIsValid } from './../../utils/validateEmail.js';
-import { passwordIsValid } from './../../utils/validatePassword.js';
-import { allTrue } from './../../utils/allTrue.js';
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -26,7 +23,7 @@ class SignUpForm extends Component {
         };
     }
 
-    //General event handler. No validation before saving value in state (used for firstname, lastname and role) (Stolen from React documentation)
+    //General event handler. (Stolen from React documentation)
     handleInputChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
@@ -38,32 +35,23 @@ class SignUpForm extends Component {
     //saved the entered data to the local storage becayse it act as a back end
     handleSignUp = (event) => {
         event.preventDefault();
-        alert("You are submitting");
-        localStorage.setItem("firstname", this.state.firstname);
-        localStorage.setItem("lastname", this.state.lastname);
-        localStorage.setItem("email", this.state.email);
-        localStorage.setItem("role", this.state.role);
-        localStorage.setItem("password", this.state.password);
-    }
-
-    //Reads email on change and saves it to the state if it is a valid email
-    handleEmailChange = (event) => {
-        let enteredEmail = event.target.value;
-
-        if (emailIsValid(enteredEmail)) {
-            this.setState({ email: enteredEmail });
+        if (!this.state.passwordmatch) {
+            alert("The form can not be submitted. The two passwords entered do not match.");
+            return
+        } else {
+            alert("You are now signed up. Your information is now insecurely stored in local storage.");
+            localStorage.setItem("firstname", this.state.firstname);
+            localStorage.setItem("lastname", this.state.lastname);
+            localStorage.setItem("email", this.state.email);
+            localStorage.setItem("role", this.state.role);
+            localStorage.setItem("password", this.state.password);
         }
     }
 
-    //Reads password on change and saves it to the state if longer than 8 
+    //Reads password on change and saves it to the state 
     handlePasswordChange = (event) => {
         let enteredPassword = event.target.value;
-
-        if (passwordIsValid(enteredPassword)) {
-            this.setState({ password: enteredPassword });
-        } else {
-            this.setState({ password: '' });
-        }
+        this.setState({ password: enteredPassword });
     }
 
     //Checks if both passwords are the same
@@ -72,39 +60,25 @@ class SignUpForm extends Component {
         let storedPassord = this.state.password;
 
         if (enteredRepeatPassword === storedPassord) {
-            console.log("match");
             this.setState({ passwordmatch: true });
         } else {
-            console.log("password to not match");
             this.setState({ passwordmatch: false });
-        }
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState !== this.state) {
-            if(allTrue(this.state)){
-                console.log("all input values are true");
-                this.setState({ index: null });
-            } else {
-                console.log("something is false or empty");
-                //this.setState({ index: null });
-            };
         }
     }
 
     render() {
         return (
             <div className="SignUpForm">
-                <form onSubmit={this.handleSignUp}>
+                <form action="#" onSubmit={this.handleSignUp}>
                     <fieldset>
                         <legend>Sign up</legend>
                         <FirstNameInput handleInputChange={this.handleInputChange} />
                         <LastNameInput handleInputChange={this.handleInputChange} />
-                        <EmailInput handleEmailChange={this.handleEmailChange} />
+                        <EmailInput handleEmailChange={this.handleInputChange} />
                         <Role handleInputChange={this.handleInputChange} />
                         <PasswordInput handlePasswordChange={this.handlePasswordChange} />
                         <PasswordRepeatInput handleRepeatPasswordChange={this.handleRepeatPasswordChange} />
-                        <button type="button" disabled={this.state.index !== null ? true : false} onClick={()=>alert('sign up button clicked')}>Sign up</button>
+                        <button type="submit">Sign up</button>
                     </fieldset>
                 </form>
                 <p>Already have an account? <Link to="/login">Log in here</Link></p>

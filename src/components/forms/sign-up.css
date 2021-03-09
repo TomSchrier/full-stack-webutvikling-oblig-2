@@ -30,11 +30,6 @@ select {
     transform: translate(1px, 1px);
 }
 
-.SignUpForm button:disabled {
-    opacity: 75%;
-    filter: saturate(25%);
-}
-
 .SignUpForm label {
     float: left;
     text-align: left;
