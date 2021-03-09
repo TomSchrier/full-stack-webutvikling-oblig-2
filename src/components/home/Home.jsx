@@ -1,5 +1,5 @@
-import './Home.css';
 import React, { Component } from 'react';
+import './Home.css';
 import BigSwitch from '../big-switch/big-switch';
 import StatusButton from '../status-button/status-button';
 import StatusImage from '../status-image/status-image';

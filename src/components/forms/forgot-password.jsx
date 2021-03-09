@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import EmailInput from './form-elements/email-input.jsx'
 import './forgot-password.css';
+import EmailInput from './form-elements/email-input'
+import SubmitButton from './form-elements/submit-button'
 
 class ForgotPassword extends Component {
     render() {
@@ -8,11 +9,11 @@ class ForgotPassword extends Component {
             <>
                 <p>You will receive an email that will help you create a new password for your account.</p>
                 <div className="ForgotPasswordForm">
-                    <form>
+                    <form action="#">
                         <fieldset>
                             <legend>Forgot Password</legend>
                             <EmailInput />
-                            <button>Reset Password</button>
+                            <SubmitButton buttonText="Reset password"/>
                         </fieldset>
                     </form>
                 </div>

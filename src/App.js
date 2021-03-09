@@ -11,7 +11,7 @@ import USERS from './users';
 import About from './components/about/About';
 import ForgotPassword from './components/forms/forgot-password';
 import Home from './components/home/Home';
-import Login from './components/login/Login';
+import Login from './components/forms/log-in';
 import Logout from './components/logout/Logout';
 import Nav from './components/nav/nav';
 import NotFound from './components/NotFound';

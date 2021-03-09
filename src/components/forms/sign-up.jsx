@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
+import './sign-up.css';
 import EmailInput from './form-elements/email-input.jsx'
 import FirstNameInput from './form-elements/first-name-input.jsx'
 import LastNameInput from './form-elements/last-name-input.jsx'
 import PasswordInput from './form-elements/password-input.jsx'
 import PasswordRepeatInput from './form-elements/password-repeat-input.jsx'
 import Role from './form-elements/role-input.jsx'
+import SubmitButton from './form-elements/submit-button';
 import { Link } from "react-router-dom";
-
-import './sign-up.css';
 
 class SignUpForm extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            email: '',
             firstname: '',
             lastname: '',
-            email: '',
-            role: 'student',
             password: '',
-            passwordmatch: false
+            passwordmatch: false,
+            role: 'student'
         };
     }
 
@@ -32,7 +32,7 @@ class SignUpForm extends Component {
         });
     }
 
-    //saved the entered data to the local storage becayse it act as a back end
+    //Saved the entered data to the local storage becayse it act as a back end
     handleSignUp = (event) => {
         event.preventDefault();
         if (!this.state.passwordmatch) {
@@ -40,11 +40,11 @@ class SignUpForm extends Component {
             return
         } else {
             alert("You are now signed up. Your information is now insecurely stored in local storage.");
+            localStorage.setItem("email", this.state.email);
             localStorage.setItem("firstname", this.state.firstname);
             localStorage.setItem("lastname", this.state.lastname);
-            localStorage.setItem("email", this.state.email);
-            localStorage.setItem("role", this.state.role);
             localStorage.setItem("password", this.state.password);
+            localStorage.setItem("role", this.state.role);
         }
     }
 
@@ -78,7 +78,7 @@ class SignUpForm extends Component {
                         <Role handleInputChange={this.handleInputChange} />
                         <PasswordInput handlePasswordChange={this.handlePasswordChange} />
                         <PasswordRepeatInput handleRepeatPasswordChange={this.handleRepeatPasswordChange} />
-                        <button type="submit">Sign up</button>
+                        <SubmitButton buttonText="Sign up"/>
                     </fieldset>
                 </form>
                 <p>Already have an account? <Link to="/login">Log in here</Link></p>

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
-import EmailInput from '../forms/form-elements/email-input';
-import PasswordInput from '../forms/form-elements/password-input.jsx';
-
+import './log-in.css';
+import EmailInput from './form-elements/email-input';
+import PasswordInput from './form-elements/password-input';
+import SubmitButton from './form-elements/submit-button';
 import { Link } from "react-router-dom";
-
-import './Login.css';
+import { Redirect } from "react-router-dom";
 
 //This component is implementing more than one functionality only for academic purposes.
 //If the app is connected to a Backend, the auth logic should be implemented in a different file (SOLID)
@@ -25,7 +24,7 @@ class Login extends Component {
                                 <legend>Log In</legend>
                                 <EmailInput />
                                 <PasswordInput />
-                                <button type="submit">Log in</button>
+                                <SubmitButton buttonText="Log in"/>
                             </fieldset>
                         </form>
                         <p>Dont have an account yet? <Link to="/signup">Sign up here</Link></p>
