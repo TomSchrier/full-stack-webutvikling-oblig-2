@@ -23,7 +23,7 @@ class SignUpForm extends Component {
         };
     }
 
-    //General event handler. (Stolen from React documentation)
+    //General event handler. (Taken from React documentation)
     handleInputChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
@@ -32,7 +32,8 @@ class SignUpForm extends Component {
         });
     }
 
-    //Saved the entered data to the local storage becayse it act as a back end
+    /*If the user enters two password that match the values from the form are saved 
+    in the local storage as it acts as the back-end in this project for now.*/
     handleSignUp = (event) => {
         event.preventDefault();
         if (!this.state.passwordmatch) {
@@ -48,13 +49,13 @@ class SignUpForm extends Component {
         }
     }
 
-    //Reads password on change and saves it to the state 
+    //Reads password onChange and saves it to the state for later use
     handlePasswordChange = (event) => {
         let enteredPassword = event.target.value;
         this.setState({ password: enteredPassword });
     }
 
-    //Checks if both passwords are the same
+    //Checks if both passwords are the same, if so, return true
     handleRepeatPasswordChange = (event) => {
         let enteredRepeatPassword = event.target.value;
         let storedPassord = this.state.password;

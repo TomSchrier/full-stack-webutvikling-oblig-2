@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 class Logout extends Component {
 
+    /*The HTML is conditionally rendered based on the isAuct the component retrieved in its props. 
+    If the user is logged out a link is provided. If the user is logged in a Log-Out button is provided*/
     render() {
         return (
             <div className="Logout">

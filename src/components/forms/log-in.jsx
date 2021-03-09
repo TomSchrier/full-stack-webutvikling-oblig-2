@@ -15,6 +15,8 @@ class Login extends Component {
             return <Redirect to={this.props.redirect} />
         }
 
+        /*This component returns its HTML based on the isAuth condition. 
+        If the user is logged out a log-in form is displayed, else a paragraph and link are displayed.*/
         return (
             <>
                 {!this.props.isAuth && <>
@@ -24,7 +26,7 @@ class Login extends Component {
                                 <legend>Log In</legend>
                                 <EmailInput />
                                 <PasswordInput />
-                                <SubmitButton buttonText="Log in"/>
+                                <SubmitButton buttonText="Log in" />
                             </fieldset>
                         </form>
                         <p>Dont have an account yet? <Link to="/signup">Sign up here</Link></p>

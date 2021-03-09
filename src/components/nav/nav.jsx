@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 
 class Nav extends Component {
 
+    /* The navbar uses conditional rendering based on the props it retrives. 
+    When a user is logged in a navbar retrieves an array with the appropriate links to display, 
+    else use the default props defined further down.*/
+    
     isLinkSet(linkName) {
         return this.props.links.find(elem => elem === linkName);
     }

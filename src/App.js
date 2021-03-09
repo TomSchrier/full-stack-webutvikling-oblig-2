@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-
 import './App.css';
-import USERS from './users';
-
 import About from './components/about/About';
 import ForgotPassword from './components/forms/forgot-password';
 import Home from './components/home/Home';
@@ -17,9 +9,10 @@ import Nav from './components/nav/nav';
 import NotFound from './components/NotFound';
 import PrivateRoute from './routes/PrivateRoute';
 import SignUpForm from './components/forms/sign-up';
+import USERS from './users';
 import UserList from './components/user-list/user-list';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { isLoggedIn } from './utils/isAuth';
-
 
 class App extends Component {
   constructor(props) {
@@ -32,14 +25,15 @@ class App extends Component {
     }
   }
 
-componentDidMount(){ 
-  const isAuth = isLoggedIn();
-  let links = isAuth ? ['home', 'user', 'dashboard', 'logout'] : undefined;
+  //The state and links are set here so that the state does not reset on reload between pages
+  componentDidMount() {
+    const isAuth = isLoggedIn();
+    let links = isAuth ? ['home', 'user', 'dashboard', 'logout'] : undefined;
     this.setState({
       isAuth,
       links
     })
-}
+  }
 
   render() {
     return (
@@ -120,6 +114,9 @@ componentDidMount(){
     });
   }
 
+  /* handleLogIn and handleLogOut are lifted from log-in. 
+  Their purpose is to set, and remove the userAuth in local storage and pass 
+  the correct links to the nav bare based on if the user is logged in or logged out */
   handleLogIn = () => {
     localStorage.setItem('userAuth', JSON.stringify(true));
     const isAuth = isLoggedIn();
