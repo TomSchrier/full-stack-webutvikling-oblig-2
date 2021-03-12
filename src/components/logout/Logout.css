@@ -15,6 +15,6 @@
     transform: translate(1px, 1px);
 }
 
-.BigButton:active {
+.Logout button:active {
     box-shadow: inset 0px 0px 5px 3px var(--color-bg-secondary-light);
 }
